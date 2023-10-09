@@ -63,3 +63,46 @@
 ![Alt 471](https://github.com/TeamUltF4/WCEBleedgen_tensor/assets/147421232/fad02535-e217-484a-95a8-5b140db9d0d5)
 
 </br>image8-:A0471
+
+### running the model
+This guide shows how to set up a TensorFlow Lite Runtime environment on a Windows PC. We'll use [Anaconda](https://www.anaconda.com/) to create a Python environment to install the [TFLite](https://github.com/EdjeElectronics/TensorFlow-Lite-Object-Detection-on-Android-and-Raspberry-Pi.git) Runtime in. 
+
+## Step 1. Download and Install Anaconda
+First, install [Anaconda](https://www.anaconda.com/), which is a Python environment manager that greatly simplifies Python package management and deployment. Anaconda allows you to create Python virtual environments on your PC without interfering with existing installations of Python. Go to the [Anaconda Downloads page](https://www.anaconda.com/products/distribution) and click the Download button.
+
+When the download finishes, open the downloaded .exe file and step through the installation wizard. Use the default install options.
+
+## Step 2. Set Up Virtual Environment and Directory
+Go to the Start Menu, search for "Anaconda Command Prompt", and click it to open up a command terminal. We'll create a folder called `tflite1` directly in the C: drive. (You can use any other folder location you like, just make sure to modify the commands below to use the correct file paths.) Create the folder and move into it by issuing the following commands in the terminal:
+
+```
+mkdir C:\tflite1
+cd C:\tflite1
+```
+
+Next, create a Python 3.9 virtual environment by issuing:
+
+```
+conda create --name tflite1-env python=3.9
+```
+
+Enter "y" when it asks if you want to proceed. Activate the environment and install the required packages by issuing the commands below. We'll install TensorFlow, OpenCV, and a downgraded version of protobuf. 
+
+```
+conda activate tflite1-env
+pip install tensorflow opencv-python protobuf==3.20.*
+```
+
+copy and paste the TFLite_detection_image.py file present in the repository to C:\tflite1
+
+
+## Step 3. Move TFLite Model into Directory
+Next, take the custom TFLite model that was downloaded from the repository and move it into the C:\tflite1 directory.At this point, you should have a folder at C:\tflite1\custom_model_lite which contains at least a `detect.tflite` and `labelmap.txt` file.
+
+## Step 4. Run TensorFlow Lite Model!
+Alright! Now that everything is set up, running the TFLite model is easy. Just call one of the detection scripts and point it at your model folder with the `--modeldir` option. For example, to run your `custom_model_lite` model on a webcam, issue:
+
+```
+python  TFLite_detection_image.py --modeldir=custom_model_lite
+```
+
