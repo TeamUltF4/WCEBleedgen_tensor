@@ -72,6 +72,8 @@ First, install [Anaconda](https://www.anaconda.com/), which is a Python environm
 
 When the download finishes, open the downloaded .exe file and step through the installation wizard. Use the default install options.
 
+
+
 ## Step 2. Set Up Virtual Environment and Directory
 Go to the Start Menu, search for "Anaconda Command Prompt", and click it to open up a command terminal. We'll create a folder called `tflite1` directly in the C: drive. (You can use any other folder location you like, just make sure to modify the commands below to use the correct file paths.) Create the folder and move into it by issuing the following commands in the terminal:
 
@@ -99,6 +101,12 @@ copy and paste the TFLite_detection_image.py file present in the repository to C
 ## Step 3. Move TFLite Model into Directory
 Next, take the custom TFLite model that was downloaded from the repository and move it into the C:\tflite1 directory.At this point, you should have a folder at C:\tflite1\custom_model_lite which contains at least a `detect.tflite` and `labelmap.txt` file.
 
+Before running, it is reccomended to install the pandas and openpyexcel libraries.
+
+```
+pip install pandas
+pip install openpyxl
+```
 ## Step 4. Run TensorFlow Lite Model!
 Alright! Now that everything is set up, running the TFLite model is easy. Just call one of the detection scripts and point it at your model folder with the `--modeldir` option. For example, to run your `custom_model_lite` model on a webcam, issue:
 
